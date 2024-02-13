@@ -1,0 +1,74 @@
+buildscript {
+    ext {
+        kotlinPluginVersion = "${kotlinVersion}"
+    }
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath("org.jetbrains.kotlin.jvm:org.jetbrains.kotlin.jvm.gradle.plugin:$kotlinPluginVersion")
+        classpath("org.jetbrains.kotlin.plugin.allopen:org.jetbrains.kotlin.plugin.allopen.gradle.plugin:$kotlinPluginVersion")
+        classpath("io.quarkus:gradle-application-plugin:$quarkusPlatformVersion")
+    }
+}
+
+allprojects {
+    group 'com.dickson'
+    version '1.0.0-SNAPSHOT'
+}
+
+subprojects { project ->
+    apply plugin: 'java'
+    apply plugin: "org.jetbrains.kotlin.jvm"
+    apply plugin: 'org.jetbrains.kotlin.plugin.allopen'
+    apply plugin: 'io.quarkus'
+
+    repositories {
+        mavenCentral()
+    }
+
+
+    dependencies {
+        implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
+        implementation 'io.quarkus:quarkus-kotlin'
+        // implementation 'org.jetbrains.kotlin:kotlin-stdlib'
+        implementation 'io.quarkus:quarkus-arc'
+        testImplementation 'io.quarkus:quarkus-junit5'
+        testImplementation 'io.rest-assured:rest-assured'
+    }
+
+    java {
+        toolchain {
+            languageVersion.set(JavaLanguageVersion.of(17))
+        }
+    }
+    kotlin {
+        jvmToolchain(17)
+    }
+
+    java {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    allOpen {
+        annotation("javax.ws.rs.Path")
+        annotation("javax.enterprise.context.ApplicationScoped")
+        annotation("io.quarkus.test.junit.QuarkusTest")
+    }
+
+    compileKotlin {
+        kotlinOptions.jvmTarget = JavaVersion.VERSION_17
+        kotlinOptions.javaParameters = true
+    }
+
+    compileTestKotlin {
+        kotlinOptions.jvmTarget = JavaVersion.VERSION_17
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+
+}

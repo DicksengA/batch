@@ -1,0 +1,9 @@
+dependencies {
+    implementation("io.quarkus:quarkus-vertx")
+    implementation project(path: ':common')
+    // https://mvnrepository.com/artifact/io.vertx/vertx-lang-kotlin-coroutines
+//    implementation "io.vertx:vertx-lang-kotlin-coroutines:$vertxVersion"
+
+
+
+}

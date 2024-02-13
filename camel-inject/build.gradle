@@ -1,0 +1,21 @@
+dependencies {
+    implementation enforcedPlatform("io.quarkus.platform:quarkus-camel-bom:$camelPlatformVersion")
+    implementation "org.apache.camel.quarkus:camel-quarkus-log"
+    implementation "org.apache.camel.quarkus:camel-quarkus-microprofile-health"
+    implementation "org.apache.camel.quarkus:camel-quarkus-timer"
+    implementation "org.apache.camel.quarkus:camel-quarkus-management"
+
+    implementation("io.quarkus:quarkus-vertx")
+//    implementation("io.quarkus:quarkus-resteasy-reactive")
+    implementation("org.apache.camel.quarkus:camel-quarkus-direct")
+    implementation("org.apache.camel.quarkus:camel-quarkus-reactive-streams")
+    // https://mvnrepository.com/artifact/io.vertx/vertx-lang-kotlin-coroutines
+//    implementation "io.vertx:vertx-lang-kotlin-coroutines:$vertxVersion"
+
+//// https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+//    implementation 'org.slf4j:slf4j-api:2.0.5'
+//    implementation 'ch.qos.logback:logback-classic:1.2.6'
+// https://mvnrepository.com/artifact/io.quarkus/quarkus-resteasy-reactive-jackson
+    implementation 'io.quarkus:quarkus-resteasy-reactive-jackson:2.14.2.Final'
+
+}

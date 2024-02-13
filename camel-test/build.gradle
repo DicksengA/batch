@@ -1,0 +1,16 @@
+dependencies {
+    implementation enforcedPlatform("io.quarkus.platform:quarkus-camel-bom:$camelPlatformVersion")
+    implementation "org.apache.camel.quarkus:camel-quarkus-log"
+    implementation "org.apache.camel.quarkus:camel-quarkus-microprofile-health"
+    implementation "org.apache.camel.quarkus:camel-quarkus-timer"
+    implementation("io.quarkus:quarkus-vertx")
+    implementation("org.apache.camel.quarkus:camel-quarkus-direct")
+    implementation("org.apache.camel.quarkus:camel-quarkus-reactive-streams")
+    // https://mvnrepository.com/artifact/io.vertx/vertx-lang-kotlin-coroutines
+    implementation 'io.vertx:vertx-lang-kotlin-coroutines:4.3.2'
+
+// https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+    implementation 'org.slf4j:slf4j-api:2.0.5'
+    implementation 'ch.qos.logback:logback-classic:1.2.6'
+
+}
